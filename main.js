@@ -34,11 +34,11 @@ function saveIssue(e) {
 }
 
 //changes the status of the issue to closed
-function setStatusClosed (id) {
+function setStatusClosed(id) {
     //gets the issues from local storage parses the issues into an array
     var issues = JSON.parse(localStorage.getItem('issues'));
 
-    for(var i = 0; i < issues.length; i++) {
+    for (var i = 0; i < issues.length; i++) {
         if (issues[i].id == id) {
             issues[i].status = "Closed";
         }
@@ -50,10 +50,10 @@ function setStatusClosed (id) {
 }
 
 //deletes the issue
-function deleteIssue (id) {
+function deleteIssue(id) {
     var issues = JSON.parse(localStorage.getItem('issues'));
 
-    for(var i = 0; i < issues.length; i++) {
+    for (var i = 0; i < issues.length; i++) {
         if (issues[i].id == id) {
             issues.splice(i, 1);
         }
@@ -66,7 +66,7 @@ function deleteIssue (id) {
 
 //fetches the issues from the local storage, parses them into an array and saves them into local variable 'issues'
 //creates the  inner html-part of the 'issuesList'-div
-function fetchIssues () {
+function fetchIssues() {
     //retrieving issues from local storage and turning them into an array
     var issues = JSON.parse(localStorage.getItem('issues'));
     //creating a variable to store the inner of the 'issuesList'-div
@@ -84,14 +84,14 @@ function fetchIssues () {
         var status = issues[i].status;
 
 
-        issuesList.innerHTML +=   '<div class="well">'+
-            '<h6>Issue ID: ' + id + '</h6>'+
-            '<p><span class="label label-info">' + status + '</span></p>'+
-            '<h3>' + desc + '</h3>'+
-            '<p><span class="glyphicon glyphicon-time"></span> ' + severity + ' '+
-            '<span class="glyphicon glyphicon-user"></span> ' + assignedTo + '</p>'+
-            '<a href="#" class="btn btn-warning" onclick="setStatusClosed(\''+id+'\')">Close</a> '+
-            '<a href="#" class="btn btn-danger" onclick="deleteIssue(\''+id+'\')">Delete</a>'+
+        issuesList.innerHTML += '<div class="well">' +
+            '<h6>Issue ID: ' + id + '</h6>' +
+            '<p><span class="label label-info">' + status + '</span></p>' +
+            '<h3>' + desc + '</h3>' +
+            '<p><span class="glyphicon glyphicon-time"></span> ' + severity + ' ' +
+            '<span class="glyphicon glyphicon-user"></span> ' + assignedTo + '</p>' +
+            '<a href="#" class="btn btn-warning" onclick="setStatusClosed(\'' + id + '\')">Close</a> ' +
+            '<a href="#" class="btn btn-danger" onclick="deleteIssue(\'' + id + '\')">Delete</a>' +
             '</div>';
     }
 }
